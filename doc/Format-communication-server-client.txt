@@ -1,0 +1,191 @@
+À consulter en cas de problèmes : MIGDAL
+
+Serveur : Java
+Communication : Socket en clair
+Format : JSON
+
+
+{
+	"query" : {
+		"query-type" : "XXXX",
+		[…]
+	}
+}
+
+
+{
+	"answer" : {
+		"query-type" : "XXXX",
+		"status" : "200",
+		[…]
+	}
+}
+
+{
+	"answer" : {
+		"query-type" : "XXXX",
+		"status" : "400",
+		"message-id" : "400-1",
+		"message" : "Bad request",
+		[query]
+	}
+}
+
+{
+	"answer" : {
+		"query-type" : "XXXX",
+		"status" : "401",
+		"message-id" : "401-1",
+		"message" : "Unauthorized",
+		[query]
+	}
+}
+
+{
+	"answer" : {
+		"query-type" : "XXXX",
+		"status" : "404",
+		"message-id" : "404-1",
+		"message" : "Not found",
+		[query]
+	}
+}
+
+{
+	"answer" : {
+		"query-type" : "XXXX",
+		"status" : "406",
+		"message-id" : "406-1",
+		"message" : "Not acceptable",
+		[query]
+	}
+}
+
+{
+	"answer" : {
+		"query-type" : "XXXX",
+		"status" : "500",
+		"message-id" : "500-1",
+		"message" : "Internal server error",
+		[query]
+	}
+}
+
+{
+	"answer" : {
+		"query-type" : "XXXX",
+		"status" : "501",
+		"message-id" : "501-1",
+		"message" : "Not implemented",
+		[query]
+	}
+}
+{
+	"answer" : {
+		"query-type" : "XXXX",
+		"status" : "503",
+		"message-id" : "503-1",
+		"message" : "Service not available",
+		[query]
+	}
+}
+
+
+#########################################################
+
+{
+	"query" : {
+		"query-type" : "get-entities"
+	}
+}
+// réponses possibles 400, 503, 501, 200
+
+{
+	"answer" : {
+		"query-type" : "get-entities",
+		"status" : "200",
+		"entities" : [
+			{ "type" : "ghost", "id" : "XXXX", "pos-x" : "xxxx", "pos-y" : "yyyy" },
+			{ "type" : "borne", "id" : "XXXX", "pos-x" : "xxxx", "pos-y" : "yyyy" },
+			{ "type" : "pastilles", "id" : "XXXX", "pos-x" : "xxxx", "pos-y" : "yyyy" }
+		]
+		
+	}
+}
+
+
+#########################################################
+
+{
+	"query" : {
+		"query-type" : "del-entities",
+		"auth-mode" : "AndroidID",
+		"AndroidID" : "XXXXXXXXXXXXXXXXX",
+		"entities" : [
+			{ "type" : "XXXXXX", "id" : "XXXXXXX" }
+		]
+	}
+}
+// réponses possibles 400, 503, 501, 200, 401, 404
+
+{
+	"answer" : {
+		"query-type" : "del-entities",
+		"status" : "200",
+		"entities" : [
+			{ "type" : "XXXXXX", "id" : "XXXXXXX" }
+		]
+	}
+}
+
+#########################################################
+
+{
+	"query" : {
+		"query-type" : "add-entities",
+		"auth-mode" : "AndroidID",
+		"AndroidID" : "XXXXXXXXXXXXXXXXX",
+		"entities" : [
+			{ "type" : "ghost", "pos-x" : "xxxx", "pos-y" : "yyyy" },
+			{ "type" : "borne", "pos-x" : "xxxx", "pos-y" : "yyyy" },
+			{ "type" : "pastilles", "pos-x" : "xxxx", "pos-y" : "yyyy" }
+		]
+	}
+}
+// réponses possibles 400, 503, 501, 200, 401, 406
+
+{
+	"answer" : {
+		"query-type" : "add-entities",
+		"status" : "200",
+		"entities" : [
+			{ "type" : "ghost", "id" : "XXXX", "pos-x" : "xxxx", "pos-y" : "yyyy" },
+			{ "type" : "borne", "id" : "XXXX", "pos-x" : "xxxx", "pos-y" : "yyyy" },
+			{ "type" : "pastilles", "id" : "XXXX", "pos-x" : "xxxx", "pos-y" : "yyyy" }
+		]
+	}
+}
+
+#########################################################
+
+{
+	"query" : {
+		"query-type" : "update-entities",
+		"auth-mode" : "AndroidID",
+		"AndroidID" : "XXXXXXXXXXXXXXXXX",
+		"entities" : [
+			{ "type" : "XXXXXX", "id" : "XXXXXXX", ["pos-x" : "xxxx", "pos-y" : "yyyy"]  }
+		]
+	}
+}
+// réponses possibles 400, 503, 501, 200, 401, 404, 406
+
+{
+	"answer" : {
+		"query-type" : "update-entities",
+		"status" : "200",
+		"entities" : [
+			{ "type" : "XXXXXX", "id" : "XXXXXXX", "pos-x" : "xxxx", "pos-y" : "yyyy" }
+		]
+	}
+}
